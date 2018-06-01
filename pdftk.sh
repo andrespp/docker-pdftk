@@ -11,7 +11,8 @@ echo $PDFDIR
 
 # create $PDFDIR case it doesn't exist
 if [ ! -d $PDFDIR ]; then
-	echo mkdir $PDFDIR 
+	mkdir $PDFDIR
+	chmod 777 $PDFDIR
 fi
 
 # start pdftk container
