@@ -12,7 +12,7 @@ This image is based on `ubuntu:16.04`.
 Just run an container with a bind mount to your pdf's working directory (`/pdfdir` on the example below)
 
 ```bash
-$ docker container run -it --rm  -v /pdfdir:/root mypdftk
+$ docker container run -it --rm -u $UID:`id -g` -v $PDFDIR:/root andrespp/pdftk
 ```
 
 # Environment variables
