@@ -9,10 +9,24 @@ This image is based on `ubuntu:16.04`.
 
 # Quick start
 
-Just run an container with a bind mount to your pdf's working directory (`/pdfdir` on the example below)
+Just run an container with a bind mount to your current directory.
 
 ```bash
-$ docker container run -it --rm -u $UID:`id -g` -v $PDFDIR:/root andrespp/pdftk
+$ docker container run -it --rm -u $UID:`id -g` -v "$PWD":/root andrespp/pdftk
+```
+
+# Install
+
+In order to run the container as if the application was installed locally, define the script bellow in `/usr/local/bin/pdftk`:
+
+```
+#!/bin/bash
+docker container run --rm -u $UID:`id -g` -v "$PWD":/root andrespp/pdftk pdftk $@
+```
+
+Also, don't forget to make it executable:
+```
+$ sudo chmod +x /usr/local/bin/pdftk
 ```
 
 # Environment variables
